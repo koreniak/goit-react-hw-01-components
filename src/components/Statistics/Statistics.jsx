@@ -11,19 +11,19 @@ export const Statistics = ({ title, stats }) => {
   const Items = stats.map(({id, label, percentage}) =>
     <StatsItem key={id} style={{backgroundColor: getRandomHexColor()}}>
       <StatsLabel>{label}</StatsLabel>
-      <Percentage>{percentage}</Percentage>
+      <Percentage>{percentage}%</Percentage>
     </StatsItem>)
 
   return (
     <StatsSection>
-      <StatsTitle>{title}</StatsTitle>
+      {title && <StatsTitle>{title}</StatsTitle>}
       <StatsList>{Items}</StatsList>
     </StatsSection>
   );
 };
 
 Statistics.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   stats: PropTypes.arrayOf(PropTypes.exact({
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
